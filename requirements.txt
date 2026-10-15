@@ -1,0 +1,4 @@
+agentdojo
+python-dotenv
+pandas
+matplotlib

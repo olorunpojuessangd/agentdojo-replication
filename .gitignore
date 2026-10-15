@@ -1,0 +1,17 @@
+# Secrets: never commit API keys
+.env
+*.key
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Large raw run logs (commit summaries in results/ instead)
+runs/
+logs/
+
+# OS / editor
+.DS_Store
+.vscode/
