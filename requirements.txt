@@ -1,4 +1,4 @@
-agentdojo
+agentdojo==0.1.35
 python-dotenv
 pandas
 matplotlib
