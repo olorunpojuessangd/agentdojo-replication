@@ -24,7 +24,21 @@ The original paper evaluated 2024-era models (GPT-4o, Claude 3.5 Sonnet, Gemini 
 - [ ] **Phase 4 (extension):** Add one new injection task or defense, and/or apply the same tests to my own RAG pipeline
 
 ## Setup
-_Fill in as you go: Python version, AgentDojo version, model(s) tested, exact commands from the AgentDojo docs._
+- Hardware: Apple M1 Pro, 16 GB RAM
+- Python 3.11.4, AgentDojo 0.1.35 (benchmark version v1.2.2, the package default)
+- Model: Llama 3.1 8B (`llama3.1:8b`), run locally with Ollama 0.40.4, context length 16384
+
+```bash
+# Terminal 1: start the model server (leave running)
+OLLAMA_CONTEXT_LENGTH=16384 ollama serve
+
+# Terminal 2: install and run
+ollama pull llama3.1:8b
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env
+python3 -m agentdojo.scripts.benchmark -s banking -ut user_task_0 --model LOCAL --model-id llama3.1:8b
+```
 
 ## Results
 _Table goes here after Phase 1–2._
@@ -40,7 +54,7 @@ _What surprised you, how results compare with the paper, failure modes worth not
 _Sample size, single suite, cost limits, model versions, etc._
 
 ## Responsible use
-This project only runs attacks inside AgentDojo's simulated environments with dummy data, against models accessed through their official APIs. It does not target real systems or users.
+This project only runs attacks inside AgentDojo's simulated environments with dummy data, against a model running locally on my own machine. It does not target real systems or users.
 
 ## Credits
 AgentDojo © 2024 Debenedetti, Zhang, Balunovic, Beurer-Kellner, Fischer, and Tramèr (MIT License).
